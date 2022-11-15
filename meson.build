@@ -4,7 +4,8 @@ project('cfs-spmv', 'cpp',
 
 conf_data = configuration_data()
 conf_data.set('version', '1.2.3')
-conf_data.set('_USE_DOUBLE', true)
+
+conf_data.set('_USE_DOUBLE', get_option('use_double'))
 conf_data.set('_USE_MKL', false)
 
 configure_file(input : 'config.h.in',

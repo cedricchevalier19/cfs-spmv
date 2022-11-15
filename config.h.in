@@ -4,4 +4,4 @@
 #mesondefine _MKL
 
 /* Define if logging is enabled. */
-#mesondefine _USE_DOUBLE
+#mesondefine use_double
