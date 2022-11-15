@@ -1,0 +1,7 @@
+/* config.h.in.  Generated from configure.ac by autoheader.  */
+
+/* Build SpMV benchmarks with MKL. */
+#mesondefine _MKL
+
+/* Define if logging is enabled. */
+#mesondefine _USE_DOUBLE
