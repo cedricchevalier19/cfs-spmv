@@ -80,6 +80,7 @@ public:
 private:
   IndexType nr_rows_, nr_cols_, nr_nzeros_;
   std::ifstream in;
+  std::vector<char> buf;
   bool symmetric_, col_wise_, zero_based_;
   int file_mode_; // 0 for MMF files, 1 for regular files
   std::vector<Elem<IndexType, ValueType>> matrix_;
@@ -180,6 +181,8 @@ template <typename IndexType, typename ValueType>
 MMF<IndexType, ValueType>::MMF(const std::string &filename)
     : nr_rows_(0), nr_cols_(0), nr_nzeros_(0), symmetric_(false),
       col_wise_(true), zero_based_(false), file_mode_(0) {
+  buf.resize(1024 * 1024);
+  in.rdbuf()->pubsetbuf(buf.data(), buf.size());
   try {
     in.open(filename);
     if (!in.is_open()) {
